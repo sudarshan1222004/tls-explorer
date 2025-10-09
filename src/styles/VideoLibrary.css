@@ -1,0 +1,47 @@
+/* src/styles/VideoLibrary.css */
+@import 'Global.css';
+
+.video-library-container {
+    padding: 20px;
+    margin-top: 30px;
+}
+
+.library-intro {
+    font-style: italic;
+    color: #94a3b8;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.video-card {
+    background-color: var(--color-button-dark);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    transition: transform 0.2s;
+}
+
+.video-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--color-primary-cyan);
+}
+
+.video-title {
+    color: var(--color-secondary-green);
+    font-size: 1.2em;
+    margin-top: 0;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed #334155;
+}
+
+.video-player {
+    aspect-ratio: 16 / 9; 
+    margin-bottom: 15px;
+}
