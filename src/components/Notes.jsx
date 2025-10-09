@@ -129,7 +129,7 @@ const Notes = () => {
       <div className="download-area">
         <button className="download-button primary-gradient">
           <Download size={20} style={{marginRight: '10px'}}/>
-          Download Full Assignment Notes (Ready for Submission)
+          Download Full Notes 
         </button>
       </div>
 
