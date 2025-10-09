@@ -1,0 +1,183 @@
+/* src/styles/Notes.css (FINAL NOTES STYLING - HOVER EFFECTS) */
+@import 'Global.css';
+
+/* --- PAGE STRUCTURE --- */
+.inner-page-container.notes-content {
+    padding: 40px 20px; 
+    margin: 30px auto;
+    max-width: 1200px;
+    background-color: var(--color-background-dark); 
+    border-radius: 12px;
+}
+
+.main-header-block {
+    text-align: center;
+    margin-bottom: 50px;
+}
+.notes-header {
+    font-size: 2.5em;
+    font-weight: 700;
+    color: var(--color-text-light);
+    margin-bottom: 5px;
+}
+.header-subtitle {
+    font-size: 1.1em;
+    color: #a1a1aa;
+    margin-top: 0;
+}
+
+
+/* --- CONTENT CARD BASE STYLING --- */
+.section-title {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: var(--color-text-light); 
+    margin: 30px 0 20px 0;
+    display: flex;
+    align-items: center;
+}
+
+.content-card {
+    background-color: var(--color-button-dark); 
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(0, 191, 255, 0.2);
+    margin-bottom: 40px;
+    transition: all 0.3s ease;
+}
+/* HOVER EFFECT 1: Lift for Main Content Cards */
+.content-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 191, 255, 0.2);
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--color-border-subtle);
+}
+.card-header .header-icon {
+    width: 28px;
+    height: 28px;
+    padding: 8px;
+    border-radius: 8px;
+    margin-right: 15px;
+    color: var(--color-primary-cyan);
+    background-color: rgba(0, 191, 255, 0.1);
+    flex-shrink: 0;
+}
+.card-title {
+    font-size: 1.5em;
+    font-weight: 600;
+    margin: 0;
+    color: var(--color-text-light);
+}
+.card-text {
+    color: #c5c5d0;
+    line-height: 1.6;
+    margin-bottom: 10px;
+    font-size: 0.95em;
+}
+
+
+/* --- KEY CONCEPTS GRID & COMPARISON CARDS --- */
+.concept-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.concept-block {
+    background-color: var(--color-button-dark);
+    padding: 25px;
+    border-radius: 8px;
+    border: 1px solid var(--color-border-subtle);
+    transition: all 0.3s ease;
+}
+/* HOVER EFFECT 2: Lift and border glow for Key Concept Blocks */
+.concept-block:hover {
+    transform: translateY(-3px);
+    border-color: var(--color-primary-cyan);
+    box-shadow: 0 4px 15px rgba(0, 191, 255, 0.1);
+}
+
+
+.comparison-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+.comparison-card {
+    background-color: var(--color-background-dark);
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid var(--color-border-subtle);
+    transition: all 0.3s ease;
+}
+/* HOVER EFFECT 3: Lift and border glow for Comparison Cards */
+.comparison-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--color-secondary-green);
+    box-shadow: 0 4px 15px rgba(74, 222, 128, 0.15);
+}
+
+.comparison-header-title {
+    font-size: 1.1em;
+    font-weight: 600;
+    color: var(--color-text-light);
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed var(--color-border-subtle);
+}
+.comparison-detail {
+    font-size: 0.9em;
+    color: #a1a1aa;
+    line-height: 1.4;
+    margin-bottom: 10px;
+}
+
+
+/* --- FINAL LINKS GRID --- */
+.final-links-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.link-card {
+    background-color: #1a2434;
+    padding: 25px;
+    border-radius: 8px;
+    border: 1px solid var(--color-border-subtle);
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    text-decoration: none;
+    display: block;
+    color: inherit;
+    position: relative;
+}
+/* HOVER EFFECT 4: Strong border and lift for Final Link Cards */
+.link-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 191, 255, 0.25);
+    border-color: var(--color-primary-cyan);
+}
+
+.link-icon {
+    color: var(--color-primary-cyan);
+    margin-bottom: 10px;
+}
+
+.download-area {
+    text-align: center;
+    padding-bottom: 40px;
+}
+/* Download button styling remains correct for submission */

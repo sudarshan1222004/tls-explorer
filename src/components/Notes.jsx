@@ -1,47 +1,138 @@
-// src/components/Notes.jsx (REPLACE CONTENT)
+// src/components/Notes.jsx (FINAL ACADEMIC NOTES)
 import React from 'react';
+import '../styles/Notes.css'; 
+import '../styles/Global.css'; 
+import { Download, Shield, Lock, Zap, FileText, CheckCircle, Key, Code, Clock, Github, ArrowRight } from 'lucide-react'; 
 
 const Notes = () => {
   return (
-    <div className="notes-container" style={{padding: '20px'}}>
-      <h2>How It Works: TLS Protocol Details</h2>
+    <div className="inner-page-container notes-content">
       
-      <p style={{color: '#94a3b8'}}>The Transport Layer Security (TLS) handshake is a cryptographic protocol that establishes a secure, encrypted connection between a client (like your browser) and a server. It is a foundational element of HTTPS.</p>
+      {/* --- Main Header --- */}
+      <div className="main-header-block">
+        <h2 className="notes-header">How TLS Handshake Works</h2>
+        <p className="header-subtitle">A comprehensive guide to understanding Transport Layer Security</p>
+      </div>
 
-      <h3 style={{color: 'var(--color-primary-cyan)'}}>Phase 1: Key Exchange Philosophy</h3>
-      <p>The handshake uses a hybrid approach:</p>
-      <ul>
-        <li><strong>Asymmetric Encryption (Handshake):</strong> Uses Public/Private Key pairs for initial authentication (proving identity) and securely agreeing on a shared secret key.</li>
-        <li><strong>Symmetric Encryption (Session):</strong> Uses a single, shared **Session Key** derived during the handshake to encrypt all bulk data transfer. This is significantly faster than asymmetric encryption.</li>
-      </ul>
-
-      <h3 style={{color: 'var(--color-primary-cyan)'}}>TLS 1.3 vs. TLS 1.2: The Core Difference</h3>
-
-      <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '30px', marginTop: '20px', border: '1px solid #4ade80', padding: '15px', borderRadius: '8px', backgroundColor: '#1e293b'}}>
-        <div>
-          <h4 style={{color: 'var(--color-secondary-green)'}}>TLS 1.2 (Legacy)</h4>
-          <ul>
-            <li><strong>Round Trip Time (RTT):</strong> Requires **2 RTT** to complete the handshake, slowing initial load time.</li>
-            <li><strong>Forward Secrecy:</strong> Optional. Often used **RSA Key Exchange**, which risked session keys if the server's private key was compromised later.</li>
-            <li><strong>Cipher Suites:</strong> Supports many deprecated, less secure cipher suites.</li>
-          </ul>
+      {/* 1. What is TLS? Block */}
+      <div className="content-card large-card card-main-definition">
+        <div className="card-header">
+            <Shield className="header-icon cyan" size={24} />
+            <h3 className="card-title">What is TLS?</h3>
         </div>
-        <div>
-          <h4 style={{color: 'var(--color-secondary-green)'}}>TLS 1.3 (Modern)</h4>
-          <ul>
-            <li><strong>Round Trip Time (RTT):</strong> Only requires **1 RTT**, significantly improving performance.</li>
-            <li><strong>Forward Secrecy:</strong> **Mandatory.** It exclusively uses **Ephemeral Diffie-Hellman (ECDHE)**, ensuring that a compromise of the server's long-term private key cannot decrypt past traffic.</li>
-            <li><strong>Cipher Suites:</strong> Removed support for all old, insecure ciphers, streamlining the process.</li>
-          </ul>
+        <p className="card-text">
+            The **Transport Layer Security (TLS)** handshake is a cryptographic protocol that provides secure communication over a computer network. It is the successor to SSL (Secure Sockets Layer) and is widely used to secure web traffic, email, and other data transfers.
+        </p>
+      </div>
+      
+      {/* 2. Key Concepts Blocks */}
+      <h3 className="section-title">Key Concepts</h3>
+      <div className="concept-grid">
+        
+        {/* Block A: Asymmetric vs Symmetric */}
+        <div className="concept-block concept-two-tier">
+            <div className="concept-title-wrapper">
+                <Lock className="concept-icon blue" size={24} />
+                <h4 className="concept-header">Asymmetric vs. Symmetric Encryption</h4>
+            </div>
+            <p className="concept-detail">
+                **Asymmetric Encryption (Public Key Cryptography):** Uses a pair of keys (public and private). Secure but computationally expensive. Used during the handshake for authentication and key exchange (e.g., RSA, ECDHE).
+            </p>
+            <p className="concept-detail">
+                **Symmetric Encryption:** Uses a single shared secret key. It’s fast and efficient. Used for encrypting the actual data after the handshake is complete (e.g., AES-256-GCM).
+            </p>
+        </div>
+
+        {/* Block B: Certificate Authority */}
+        <div className="concept-block">
+            <div className="concept-title-wrapper">
+                <CheckCircle className="concept-icon green" size={24} />
+                <h4 className="concept-header">Certificate Authority (CA)</h4>
+            </div>
+            <p className="concept-detail full-detail">
+                A trusted third-party organization that issues digital certificates. The CA verifies the identity of the certificate holder and digitally signs the certificate. During the TLS handshake, the client verifies the server's certificate by checking the CA's signature.
+            </p>
+        </div>
+        
+        {/* Block C: Cipher Suite */}
+        <div className="concept-block">
+            <div className="concept-title-wrapper">
+                <Code className="concept-icon cyan" size={24} />
+                <h4 className="concept-header">Cipher Suite</h4>
+            </div>
+            <p className="concept-detail full-detail">
+                The specific set of cryptographic algorithms (for key exchange, encryption, and hashing) agreed upon by the client and server during the handshake. This defines the security parameters for the established session.
+            </p>
         </div>
       </div>
       
-      <h3 style={{color: 'var(--color-primary-cyan)', marginTop: '30px'}}>Key Concept: Perfect Forward Secrecy (PFS)</h3>
-      <p>PFS is the primary security improvement in TLS 1.3. It ensures that the compromise of a server's long-term private key does not compromise the session keys of past sessions. This is achieved because the session key is based on a **temporary (ephemeral)** key exchange (ECDHE) that is discarded after the session ends.</p>
-
-      <div style={{border: '1px dashed #4ade80', padding: '15px', marginTop: '20px', textAlign: 'center'}}>
-        Download Full Assignment Notes (PDF Placeholder)
+      {/* 3. TLS 1.2 Handshake (Legacy) */}
+      <h3 className="section-title warning-title">TLS 1.2 Handshake (Legacy)</h3>
+      <div className="comparison-grid">
+        <div className="comparison-card legacy-card">
+            <Clock className="comparison-icon warning" size={24} />
+            <h4 className="comparison-header-title">2-RTT Handshake</h4>
+            <p className="comparison-detail">TLS 1.2 required two full round-trip times before encrypted data can be sent, resulting in higher latency for establishing connections.</p>
+        </div>
+        <div className="comparison-card legacy-card">
+            <Key className="comparison-icon warning" size={24} />
+            <h4 className="comparison-header-title">Optional RSA Key Exchange</h4>
+            <p className="comparison-detail">TLS 1.2 allowed RSA key exchange, which does not provide Perfect Forward Secrecy, exposing past sessions if the server key is compromised.</p>
+        </div>
       </div>
+
+      {/* 4. TLS 1.3 Handshake (Modern) */}
+      <h3 className="section-title success-title">TLS 1.3 Handshake (Modern)</h3>
+      <div className="comparison-grid">
+        <div className="comparison-card modern-card">
+            <Zap className="comparison-icon success" size={24} />
+            <h4 className="comparison-header-title">1-RTT Handshake</h4>
+            <p className="comparison-detail">TLS 1.3 reduces the handshake to just one round-trip time by sending key shares in the first message, significantly improving connection speed.</p>
+        </div>
+        <div className="comparison-card modern-card">
+            <Lock className="comparison-icon success" size={24} />
+            <h4 className="comparison-header-title">Mandatory Perfect Forward Secrecy</h4>
+            <p className="comparison-detail">TLS 1.3 exclusively uses Ephemeral Diffie-Hellman (ECDHE), guaranteeing that session keys cannot be derived even if long-term keys are compromised.</p>
+        </div>
+      </div>
+
+      {/* 5. Master Secret Block */}
+      <div className="content-card master-secret-card">
+        <div className="card-header">
+            <Key className="header-icon cyan" size={24} />
+            <h3 className="card-title">Master Secret / Session Key</h3>
+        </div>
+        <p className="card-text">
+            The Master Secret is derived from the Client Random, Server Random, and key exchange data. Keys are unique to each session and never transmitted, guaranteeing **Perfect Forward Secrecy (PFS)**.
+        </p>
+      </div>
+      
+      {/* --- 6. Final Links Blocks (GitHub/Colab) --- */}
+      <h3 className="section-title final-links-title">Project Resources</h3>
+      <div className="final-links-grid">
+          
+          <a href="https://github.com/sudarshan1222004/tls-explorer.git" target="_blank" rel="noopener noreferrer" className="link-card github-link">
+              <Github size={36} className="link-icon" />
+              <h4>GitHub Repository</h4>
+              <p>View the full source code and commit history for this project on GitHub.</p>
+              <ArrowRight size={20} className="link-arrow"/>
+          </a>
+          
+          <a href="https://colab.research.google.com/drive/1xszdYuv-KhQft2njWfUMudiapAJpmc-I?usp=sharing" target="_blank" rel="noopener noreferrer" className="link-card collab-link">
+              <Code size={36} className="link-icon" />
+              <h4>Colab Live Demo Link</h4>
+              <p>Access the live development environment for review and assessment.</p>
+              <ArrowRight size={20} className="link-arrow"/>
+          </a>
+      </div>
+
+      <div className="download-area">
+        <button className="download-button primary-gradient">
+          <Download size={20} style={{marginRight: '10px'}}/>
+          Download Full Assignment Notes (Ready for Submission)
+        </button>
+      </div>
+
     </div>
   );
 };
