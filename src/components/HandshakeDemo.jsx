@@ -1,12 +1,14 @@
-// src/components/HandshakeDemo.jsx (REPLACE ENTIRE CONTENT)
+// src/components/HandshakeDemo.jsx (REPLACED ENTIRE CONTENT)
 
 import React, { useState } from 'react';
 import { HANDSHAKE_STEPS } from '../data/handshakeData';
 import '../styles/HandshakeDemo.css';
 
 const HandshakeDemo = () => {
-  // State to track which step the user is viewing.
+  // 1. Hooks (MUST be at the top)
   const [currentStep, setCurrentStep] = useState(0); 
+  
+  // 2. Variables and Logic
   const currentData = HANDSHAKE_STEPS[currentStep];
   const maxSteps = HANDSHAKE_STEPS.length - 1;
 
@@ -19,14 +21,24 @@ const HandshakeDemo = () => {
     setCurrentStep((prev) => Math.max(prev - 1, 0));
   };
 
-  // Logic to control animation and visibility
+  // Dynamic Headline Logic
+  const getHeadline = (step) => {
+      if (step === 0) return "Connection Initiation: Let's Begin the Negotiation";
+      if (step === maxSteps) return "Secure Channel Established: Start Encrypting!";
+      if (step === 4) return "Key Derivation: Achieving Perfect Forward Secrecy";
+      return currentData.title;
+  };
+  
+  // Logic for animation
   const isPacketVisible = currentData.messagePacket !== null;
-  const isMoving = isPacketVisible && currentStep !== 0; // Don't animate on step 0
-  const animationKey = currentStep; // Key forces re-render/re-animation when step changes
+  const isMoving = isPacketVisible && currentStep !== 0; 
+  const animationKey = currentStep; 
 
+  // 3. Main JSX Return (Must be the LAST thing)
   return (
     <div className="handshake-container">
-      <h2>Interactive Demo: {currentData.title}</h2>
+      {/* Use the dynamic headline */}
+      <h2>{getHeadline(currentStep)}</h2>
       <p className="subtitle">{currentData.subtitle}</p>
 
       {/* Special visual element for the Master Secret calculation step (Step 4) */}

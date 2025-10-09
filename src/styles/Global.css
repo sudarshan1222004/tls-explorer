@@ -1,38 +1,50 @@
-/* src/styles/Global.css (REVERTED TO STABLE DARK MODE) */
+/* src/styles/Global.css (FINAL STRUCTURAL CSS) */
 
 :root {
-    /* Define colors based on the stable dark theme */
-    --color-background-dark: #121021; /* Deep Dark Navy */
-    --color-text-light: #F0F0F0; /* Off-White for text */
-    --color-primary-cyan: #00BFFF; /* Bright cyan for actions */
-    --color-secondary-green: #4ade80; /* Security Green accent */
-    --color-button-dark: #1e293b; /* Dark background for elements */
-    --color-border-subtle: #334155; /* Subtle border color */
+    /* Define colors based on the target navy/cyan theme */
+    --color-background-dark: #121827; 
+    --color-text-light: #F0F0F0;
+    --color-primary-cyan: #00BFFF;
+    --color-secondary-blue: #007bff; 
+    --color-secondary-green: #4ade80; 
+    --color-button-dark: #1e293b; 
+    --color-border-subtle: #334155; 
     --font-stack: 'Roboto', 'Inter', sans-serif; 
 }
 
-/* Global Body and App Styles */
-body {
+/* 1. HTML/BODY: Ensure full screen sizing and dark background */
+html, body {
+    height: 100%;
     margin: 0;
     padding: 0;
-    font-family: var(--font-stack);
-    background-color: var(--color-background-dark);
+    background-color: var(--color-background-dark); 
     color: var(--color-text-light);
-    line-height: 1.6;
-    overflow-x: hidden; 
-    min-height: 100vh;
+    font-family: var(--font-stack);
 }
 
-.tls-app {
-    max-width: 1200px; /* Bring back the max-width for cleaner center alignment */
-    margin: 0 auto;
-    padding: 0;
+body {
+    line-height: 1.6;
+    overflow-x: hidden; 
+}
+
+/* 2. ROOT & TLS-APP: Structure for fixed header and full height */
+#root, .tls-app {
     min-height: 100vh;
+    width: 100%;
+    max-width: none; 
     display: flex;
     flex-direction: column;
 }
 
-/* Button Base Styles */
+/* Main content area - CRITICAL: Adds space below the fixed Navbar */
+.main-content-area {
+    flex-grow: 1; 
+    padding-top: 85px; /* Space below fixed navbar */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Button & Footer styles */
 button {
     cursor: pointer;
     font-weight: 600;
@@ -42,7 +54,11 @@ button {
     transition: all 0.3s ease;
 }
 
-button:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
+footer {
+    text-align: center;
+    padding: 15px 0;
+    border-top: 1px solid var(--color-border-subtle);
+    margin-top: auto; 
+    font-size: 0.8em;
+    color: #94a3b8;
 }

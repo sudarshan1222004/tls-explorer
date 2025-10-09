@@ -1,67 +1,51 @@
-// src/components/HomeView.jsx (REPLACE ENTIRE CONTENT)
+// src/components/HomeView.jsx (REPLACED ENTIRE CONTENT - FINAL SYNTAX FIX)
+
 import React from 'react';
 import { NAV_LINKS } from '../data/navLinks';
 import '../styles/HomeView.css';
 import '../styles/Global.css'; 
-
-
-// =================================================================
-// SVG ICON DEFINITIONS 
-// =================================================================
-const ShieldIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feature-icon">
-    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-  </svg>
-);
-
-const LockIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feature-icon">
-    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-  </svg>
-);
-
-const LightningIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feature-icon">
-    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
-  </svg>
-);
-
+import { ArrowRight, Shield, Lock, Zap } from 'lucide-react'; 
 
 // =================================================================
-// FEATURE DATA ARRAY
+// FEATURE DATA ARRAY (Required for the cards section)
 // =================================================================
 const features = [
   { 
     title: "Secure by Design", 
     description: "Learn how TLS protects data integrity, confidentiality, and authenticity through cryptographic protocols.", 
-    icon: ShieldIcon 
+    icon: Shield,
+    color: '#00BFFF' 
   },
   { 
     title: "End-to-End Encryption", 
     description: "Understand the journey from asymmetric key exchange to fast symmetric session encryption.", 
-    icon: LockIcon 
+    icon: Lock,
+    color: '#3b82f6'
   },
   { 
     title: "Lightning Fast", 
     description: "Discover how TLS 1.3 achieves secure connections in just one round trip time (1-RTT).", 
-    icon: LightningIcon 
+    icon: Zap,
+    color: '#4ade80'
   },
 ];
 
 
 // =================================================================
-// HOME VIEW COMPONENT
+// HOME VIEW COMPONENT (Cleaned and Error-Free)
 // =================================================================
 const HomeView = ({ setView }) => {
   const interactiveDemoLink = NAV_LINKS.find(link => link.name === 'Interactive Demo');
   const notesLink = NAV_LINKS.find(link => link.name === 'How It Works (Notes)');
 
   return (
-    <div className="home-container">
+    <div className="home-container"> 
       
-      {/* A. Hero Section - Centered content in the viewport */}
-      <section className="hero-section-final">
+      {/* Background layer must be here for the fixed aesthetic */}
+      <div className="home-bg-static-layer"></div>
+
+      {/* 1. HERO SECTION (Title and Buttons) */}
+      <section className="hero-section-main">
         <h1 className="hero-title">
           Establish Trust: The Journey <br /> of <span className="highlight-text">a TLS Handshake</span>
         </h1>
@@ -73,7 +57,7 @@ const HomeView = ({ setView }) => {
             onClick={() => setView(interactiveDemoLink?.name || 'Interactive Demo')} 
             className="hero-button primary-gradient"
           >
-            Launch Interactive Demo &rarr;
+            Launch Interactive Demo <ArrowRight size={20} style={{marginLeft: '8px'}} />
           </button>
           <button 
             onClick={() => setView(notesLink?.name || 'How It Works (Notes)')} 
@@ -84,19 +68,47 @@ const HomeView = ({ setView }) => {
         </div>
       </section>
 
-      {/* B. Feature Cards Section - Placed below the hero */}
-      <section className="feature-cards-section-bottom">
-        <div className="feature-card-grid">
-          {features.map((feature, index) => (
-            <div key={index} className="feature-card">
-              <feature.icon />
-              <h3 className="card-title">{feature.title}</h3>
-              <p className="card-description">{feature.description}</p>
-            </div>
-          ))} 
+      {/* 2. VIDEO SECTION (Scrolls into view) */}
+      <section className="scroll-section video-section">
+        <h2 className="section-headline">Watch the Process</h2>
+        <div className="video-placeholder-box">
+            <video 
+                autoPlay 
+                loop 
+                muted 
+                controls 
+                className="embedded-video"
+            >
+                {/* Ensure the path is correct: /intro.mp4 */}
+                <source src="/intro.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+            </video>
         </div>
       </section>
 
+      {/* 3. FEATURE CARDS SECTION (Scrolls further down) */}
+      <section className="scroll-section feature-cards-section">
+        <h2 className="section-headline">Why TLS Matters</h2>
+        <div className="feature-card-grid">
+          {features.map((feature, index) => {
+            const IconComponent = feature.icon;
+            
+            // --- CRITICAL FIX: Explicit RETURN statement ---
+            return (
+              <div key={index} 
+                   className="feature-card" 
+                   style={{borderLeft: `4px solid ${feature.color}`}}
+              >
+                <IconComponent size={30} className="feature-icon" style={{color: feature.color}} />
+                <h3 className="card-title">{feature.title}</h3>
+                <p className="card-description">{feature.description}</p>
+              </div>
+            );
+            // ---------------------------------------------
+          })} 
+        </div>
+      </section>
+      
     </div> 
   );
 };

@@ -1,45 +1,31 @@
-// src/components/NavBar.jsx (PILL STYLE)
+// src/components/NavBar.jsx (REPLACED CONTENT)
 import React from 'react';
-import { NAV_LINKS } from '../data/navLinks';
+import { NAV_LINKS } from '../data/navLinks'; // Requires navLinks.js
 import '../styles/NavBar.css'; 
-
-const LockLogo = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="logo-icon">
-        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-    </svg>
-);
+import { Lock } from 'lucide-react'; 
 
 const NavBar = ({ currentView, setView }) => {
   return (
     <nav className="navbar">
-      <div className="nav-logo" onClick={() => setView('Home')}>
-        <LockLogo />
-        TLS Handshake Explorer
-      </div>
-      <div className="nav-links-wrapper">
-          <ul className="nav-links">
-            <li>
-                <a 
-                    href="#" 
-                    onClick={(e) => { e.preventDefault(); setView('Home'); }}
-                    className={currentView === 'Home' ? 'active' : ''}
-                >
-                    Home
-                </a>
+      <div className="nav-content-wrapper">
+        <div className="nav-logo" onClick={() => setView('Home')}>
+          <Lock className="logo-icon" />
+          <span style={{fontSize: '1.1em', lineHeight: '1.2'}}>TLS Handshake Explorer</span>
+        </div>
+        
+        <ul className="nav-links">
+          {['Home', 'Interactive Demo', 'How It Works (Notes)', 'Video Library', 'Ask an Expert (Chatbot)'].map((name) => (
+            <li key={name}>
+              <a 
+                href="#" 
+                onClick={(e) => { e.preventDefault(); setView(name); }}
+                className={currentView === name ? 'active' : ''}
+              >
+                {name}
+              </a>
             </li>
-            {NAV_LINKS.map((link) => (
-              <li key={link.path}>
-                <a 
-                  href="#" 
-                  onClick={(e) => { e.preventDefault(); setView(link.name); }}
-                  className={currentView === link.name ? 'active' : ''}
-                >
-                  {link.name}
-                </a>
-              </li>
-            ))}
-          </ul>
+          ))}
+        </ul>
       </div>
     </nav>
   );
