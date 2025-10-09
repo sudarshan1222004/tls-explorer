@@ -1,0 +1,166 @@
+/* src/styles/HandshakeDemo.css */
+@import 'Global.css';
+
+.handshake-container {
+    padding: 20px;
+    border: 1px solid var(--color-border-subtle);
+    border-radius: 8px;
+    background-color: #1e293b; 
+    margin-top: 30px;
+}
+
+.subtitle {
+    font-style: italic;
+    color: #94a3b8;
+    margin-bottom: 30px;
+}
+
+/* Main Client/Server/Flow Layout */
+.handshake-flow-area {
+    display: grid;
+    grid-template-columns: 2fr 1fr 2fr; /* Client | Flow Line | Server */
+    gap: 10px;
+    min-height: 250px;
+    align-items: center;
+    margin: 30px 0;
+}
+
+.flow-panel {
+    padding: 20px;
+    border: 2px solid var(--color-border-subtle);
+    border-radius: 8px;
+    min-height: 180px;
+    background-color: #0f172a; 
+}
+
+.flow-panel h3 {
+    color: var(--color-primary-cyan);
+    text-align: center;
+    border-bottom: 1px dashed var(--color-border-subtle);
+    padding-bottom: 10px;
+    margin-top: 0;
+}
+
+/* Flow Line Area (Container for the Packet) */
+.flow-line-area {
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.connection-line {
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-secondary-green);
+    box-shadow: 0 0 10px var(--color-secondary-green); 
+}
+
+/* Message Packet Styling */
+.message-packet {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 8px 15px;
+    background-color: var(--color-primary-cyan);
+    color: var(--color-background-dark);
+    font-weight: bold;
+    border-radius: 20px;
+    white-space: nowrap;
+    opacity: 0; 
+    transition: opacity 0.5s ease;
+    border: 3px solid transparent; 
+}
+
+.message-packet.visible {
+    opacity: 1;
+}
+
+/* ---------------------------------------------------- */
+/* ANIMATION LOGIC */
+/* ---------------------------------------------------- */
+
+.message-packet.client-to-server {
+    left: calc(0% - 50px); 
+    transform: translateX(0) translateY(-50%);
+    animation: move-to-server 0.8s ease-out forwards;
+}
+
+@keyframes move-to-server {
+    0% { transform: translate(-100%, -50%); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translate(100%, -50%); opacity: 1; }
+}
+
+.message-packet.server-to-client {
+    left: calc(100% + 50px); 
+    transform: translateX(0) translateY(-50%);
+    animation: move-to-client 0.8s ease-out forwards;
+}
+
+@keyframes move-to-client {
+    0% { transform: translate(100%, -50%); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translate(-100%, -50%); opacity: 1; }
+}
+
+.calculation-indicator {
+    text-align: center;
+    padding: 15px;
+    margin: 20px 0;
+    border: 2px dashed var(--color-secondary-green);
+    color: var(--color-secondary-green);
+    font-size: 1.1em;
+    font-weight: bold;
+    animation: pulse 1s infinite alternate;
+}
+
+@keyframes pulse {
+    from { opacity: 0.7; }
+    to { opacity: 1; }
+}
+
+/* Data Details */
+.message-details {
+    background-color: #1e293b;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid var(--color-primary-cyan);
+    margin-top: 20px;
+}
+
+.message-details h4 {
+    color: var(--color-secondary-green);
+    margin-top: 0;
+}
+
+.message-details ul {
+    list-style: none;
+    padding: 0;
+}
+
+.message-details li {
+    margin-bottom: 5px;
+    border-left: 3px solid var(--color-border-subtle);
+    padding-left: 10px;
+}
+
+.message-details strong {
+    color: var(--color-primary-cyan);
+    display: inline-block;
+    min-width: 150px;
+}
+
+.navigation-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.step-counter {
+    color: var(--color-primary-cyan);
+    font-weight: bold;
+}

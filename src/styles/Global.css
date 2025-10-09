@@ -1,0 +1,48 @@
+/* src/styles/Global.css (REVERTED TO STABLE DARK MODE) */
+
+:root {
+    /* Define colors based on the stable dark theme */
+    --color-background-dark: #121021; /* Deep Dark Navy */
+    --color-text-light: #F0F0F0; /* Off-White for text */
+    --color-primary-cyan: #00BFFF; /* Bright cyan for actions */
+    --color-secondary-green: #4ade80; /* Security Green accent */
+    --color-button-dark: #1e293b; /* Dark background for elements */
+    --color-border-subtle: #334155; /* Subtle border color */
+    --font-stack: 'Roboto', 'Inter', sans-serif; 
+}
+
+/* Global Body and App Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-stack);
+    background-color: var(--color-background-dark);
+    color: var(--color-text-light);
+    line-height: 1.6;
+    overflow-x: hidden; 
+    min-height: 100vh;
+}
+
+.tls-app {
+    max-width: 1200px; /* Bring back the max-width for cleaner center alignment */
+    margin: 0 auto;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Button Base Styles */
+button {
+    cursor: pointer;
+    font-weight: 600;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}

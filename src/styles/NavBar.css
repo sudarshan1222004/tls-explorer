@@ -1,0 +1,66 @@
+/* src/styles/NavBar.css (PILL STYLE) */
+@import 'Global.css';
+
+.navbar {
+    position: sticky; /* Sticky is better than fixed when content scrolls */
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: var(--color-background-dark); /* Solid dark background */
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.3em;
+    font-weight: 600;
+    color: var(--color-text-light);
+    cursor: pointer;
+    /* Pill styling */
+    padding: 8px 15px;
+    background-color: var(--color-button-dark);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: 12px;
+}
+
+.logo-icon {
+    margin-right: 8px;
+    color: var(--color-primary-cyan);
+}
+
+.nav-links-wrapper {
+    /* Pill container for the links */
+    background-color: var(--color-button-dark);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: 50px; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    padding: 0 10px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    display: block;
+    text-decoration: none;
+    color: var(--color-text-light);
+    font-size: 0.95em;
+    padding: 10px 15px;
+    border-radius: 50px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.nav-links a.active {
+    background-color: #3e3e4f; 
+    color: var(--color-primary-cyan);
+    font-weight: bold;
+}
