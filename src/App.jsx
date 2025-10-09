@@ -41,11 +41,26 @@ function App() {
         </main>
       </div>
       
-      <footer>
-        <p>© 2025 Cryptography Project Demo - TLS Handshake Explorer</p>
+     <footer>
+        <p>
+          © 2025 Cryptography Project Demo | Designed and Developed by 
+          <a 
+            href="https://sudarshanmadival.netlify.app/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            style={{ 
+              color: 'var(--color-primary-cyan)', 
+              marginLeft: '5px', 
+              textDecoration: 'none' 
+            }}
+          >
+            Sudarshan Madival (Portfolio)
+          </a>
+        </p>
       </footer>
     </div>
   );
 }
+
 
 export default App;
