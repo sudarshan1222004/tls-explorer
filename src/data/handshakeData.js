@@ -15,7 +15,7 @@ export const HANDSHAKE_STEPS = [
     id: 1,
     title: "Client Hello",
     subtitle: "Client sends security parameters to the Server.",
-    clientAction: "Client sends its supported TLS versions, a list of Cipher Suites (preferred algorithms), and the Client Random number.",
+    clientAction: "Client sends its supported TLS versions,list Cipher Suites, and Client Random number.",
     serverAction: "Server receives the hello and analyzes the offered capabilities.",
     messagePacket: {
       from: 'Client',

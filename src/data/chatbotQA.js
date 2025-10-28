@@ -2,6 +2,10 @@
 
 export const CHATBOT_QA = [
   {
+    question: "hi",
+    answer: "HI,i am Gopal .feel free to ask any querires regarding TLS handshake"
+  },
+  {
     question: "What is a TLS handshake?",
     answer: "The TLS handshake is a negotiation process between a client (browser) and a server to establish a secure, encrypted connection. It verifies the server's identity, agrees on encryption methods, and generates a shared secret key (Session Key)."
   },

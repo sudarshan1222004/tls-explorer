@@ -118,7 +118,7 @@ const Notes = () => {
               <ArrowRight size={20} className="link-arrow"/>
           </a>
           
-          <a href="https://colab.research.google.com/drive/1xszdYuv-KhQft2njWfUMudiapAJpmc-I?usp=sharing" target="_blank" rel="noopener noreferrer" className="link-card collab-link">
+          <a href="https://colab.research.google.com/drive/1tbOdYI89rLSfxoYA8hAKl_x11WduRuB8?usp=sharing" target="_blank" rel="noopener noreferrer" className="link-card collab-link">
               <Code size={36} className="link-icon" />
               <h4>Colab Live Demo Link</h4>
               <p>Access the live development environment for review and assessment.</p>
