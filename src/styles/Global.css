@@ -1,4 +1,4 @@
-/* src/styles/Global.css (FINAL STRUCTURAL CSS) */
+/* src/styles/Global.css (CLEANED) */
 
 :root {
     /* Define colors based on the target navy/cyan theme */
@@ -36,8 +36,8 @@ body {
     flex-direction: column;
 }
 
-/* Main content area - CRITICAL: Adds space below the fixed Navbar */
-.main-content-area {
+/* Main content area - CRITICAL: Correctly targets the main content block */
+.content { 
     flex-grow: 1; 
     padding-top: 85px; /* Space below fixed navbar */
     display: flex;

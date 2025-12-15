@@ -1,47 +1,48 @@
-// src/App.jsx (REPLACED ENTIRE CONTENT)
+// src/App.jsx (FINAL NAVIGATION UPDATE WITH QUIZ)
 import React, { useState } from 'react';
-import HomeView from './components/HomeView'; 
-import NavBar from './components/NavBar';
-import HandshakeDemo from './components/HandshakeDemo';
-import Notes from './components/Notes'; 
-import ChatbotEmbed from './components/ChatbotEmbed';
-import VideoLibrary from './components/VideoLibrary';
-
+import './styles/App.css'; 
 import './styles/Global.css'; 
-import './index.css'; // Ensure the index CSS is being referenced
+import NavBar from './components/NavBar';
+import HomeView from './components/HomeView';
+import HandshakeDemo from './components/HandshakeDemo';
+import Notes from './components/Notes';
+import VideoLibrary from './components/VideoLibrary';
+import ChatbotEmbed from './components/ChatbotEmbed';
+import TLSQuiz from './components/TLSQuiz'; 
+
+// Link definitions
+const NAV_LINKS = [
+  { name: 'Home', component: HomeView },
+  { name: 'Interactive Demo', component: HandshakeDemo },
+  { name: 'How It Works (Notes)', component: Notes },
+  { name: 'Video Library', component: VideoLibrary },
+  { name: 'Ask an Expert (Chatbot)', component: ChatbotEmbed },
+  { name: 'Quiz Yourself', component: TLSQuiz } // <-- QUIZ LINK REGISTERED
+];
+
+// Helper to determine which component to render
+const getComponentByName = (name) => {
+  const link = NAV_LINKS.find(link => link.name === name);
+  return link ? link.component : HomeView;
+};
 
 function App() {
-  const [currentView, setCurrentView] = useState('Home'); 
-
-  const renderView = () => {
-    switch (currentView) {
-      case 'Interactive Demo':
-        return <HandshakeDemo />;
-      case 'How It Works (Notes)':
-        return <Notes />;
-      case 'Video Library':
-        return <VideoLibrary />;
-      case 'Ask an Expert (Chatbot)':
-        return <ChatbotEmbed />;
-      case 'Home':
-      default:
-        return <HomeView setView={setCurrentView} />;
-    }
-  };
+  const [currentView, setCurrentView] = useState('Home');
+  const ComponentToRender = getComponentByName(currentView);
 
   return (
-    <div className="tls-app">
-      {/* 1. FIXED NAVBAR (Outside main content flow) */}
-      <NavBar currentView={currentView} setView={setCurrentView} /> 
+    <div className="app-container">
+      <NavBar 
+        navLinks={NAV_LINKS} 
+        currentView={currentView} 
+        setView={setCurrentView} 
+      />
       
-      {/* 2. Main Content Wrapper (Handles the padding for the fixed navbar) */}
-      <div className="main-content-area"> 
-        <main>
-          {renderView()}
-        </main>
-      </div>
-      
-     <footer>
+      <main className="content">
+        <ComponentToRender setView={setCurrentView} />
+      </main>
+
+      <footer>
         <p>
           © 2025 Cryptography Project Demo | Designed and Developed by 
           <a 
@@ -61,6 +62,5 @@ function App() {
     </div>
   );
 }
-
 
 export default App;

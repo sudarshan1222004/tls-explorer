@@ -1,0 +1,211 @@
+/* src/styles/TLSQuiz.css */
+@import 'Global.css';
+
+.quiz-container {
+    padding: 40px 20px; 
+    margin: 30px auto;
+    max-width: 800px;
+    background-color: var(--color-background-dark); 
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.quiz-header {
+    font-size: 2.2em;
+    font-weight: 700;
+    color: var(--color-text-light);
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quiz-intro {
+    text-align: center;
+    font-size: 1.1em;
+    color: #a1a1aa;
+    margin-bottom: 30px;
+}
+
+/* --- PROGRESS BAR --- */
+.progress-bar-container {
+    background-color: var(--color-button-dark);
+    height: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--color-primary-cyan), var(--color-secondary-blue));
+    border-radius: 5px;
+    transition: width 0.5s ease-in-out;
+}
+
+.progress-text {
+    position: absolute;
+    top: -30px;
+    right: 0;
+    color: #a1a1aa;
+    font-size: 0.9em;
+}
+
+/* --- QUESTION CARD --- */
+.question-card {
+    background-color: var(--color-button-dark);
+    padding: 30px;
+    border-radius: 10px;
+    border: 1px solid var(--color-border-subtle);
+    margin-bottom: 30px;
+}
+
+.question-text {
+    font-size: 1.5em;
+    color: var(--color-text-light);
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.options-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.option-button {
+    width: 100%;
+    text-align: left;
+    padding: 15px 20px;
+    border-radius: 8px;
+    background-color: var(--color-background-dark);
+    color: var(--color-text-light);
+    border: 1px solid var(--color-border-subtle);
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    font-size: 1em;
+}
+
+.option-button:hover:not(:disabled) {
+    background-color: #2a3a52;
+    border-color: var(--color-primary-cyan);
+}
+
+.option-button.selected {
+    background-color: rgba(0, 191, 255, 0.15);
+    border-color: var(--color-primary-cyan);
+    color: var(--color-primary-cyan);
+    font-weight: 600;
+}
+
+/* --- NAVIGATION AND ACTIONS --- */
+.quiz-navigation {
+    text-align: right;
+}
+
+.next-button {
+    padding: 12px 25px;
+    font-size: 1.1em;
+    font-weight: 600;
+    border-radius: 8px;
+    background: linear-gradient(90deg, var(--color-primary-cyan) 0%, var(--color-secondary-blue) 100%);
+    color: var(--color-background-dark);
+    transition: all 0.3s;
+    display: inline-flex;
+    align-items: center;
+}
+
+.next-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* --- RESULTS VIEW --- */
+.results-view .quiz-header {
+    margin-bottom: 30px;
+}
+
+.score-summary {
+    text-align: center;
+    font-size: 1.5em;
+    color: var(--color-text-light);
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--color-border-subtle);
+    padding-bottom: 20px;
+}
+
+.final-score {
+    font-size: 2em;
+    font-weight: 700;
+    color: var(--color-secondary-green);
+    margin-left: 15px;
+}
+
+.result-feedback {
+    text-align: center;
+    color: var(--color-primary-cyan);
+    margin-bottom: 40px;
+}
+
+.restart-button {
+    padding: 10px 20px;
+    background-color: var(--color-secondary-blue);
+    color: var(--color-text-light);
+    border-radius: 8px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 40px auto;
+}
+
+/* Review Section */
+.review-section h2 {
+    color: var(--color-text-light);
+    border-bottom: 2px solid var(--color-primary-cyan);
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+}
+
+.review-question-card {
+    background-color: var(--color-button-dark);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.review-question-text {
+    font-size: 1.1em;
+    color: var(--color-text-light);
+    margin-bottom: 10px;
+}
+
+.review-index {
+    color: var(--color-primary-cyan);
+    font-weight: 700;
+    margin-right: 5px;
+}
+
+.review-answer-info p {
+    margin: 5px 0;
+    padding-left: 15px;
+}
+
+.review-user-answer.correct {
+    color: var(--color-secondary-green);
+}
+
+.review-user-answer.incorrect {
+    color: #ef4444; /* Red */
+    font-weight: 600;
+}
+
+.review-correct-answer {
+    color: var(--color-secondary-blue);
+    font-weight: 600;
+    border-left: 2px solid var(--color-secondary-blue);
+    padding-left: 10px;
+    margin-top: 10px;
+}

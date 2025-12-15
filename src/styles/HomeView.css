@@ -12,7 +12,6 @@
     height: 100vh;
     z-index: -1; 
     
-    /* Aesthetic: Static gradient background matching the image */
     background: radial-gradient(
         circle at center 0%, 
         rgba(0, 150, 255, 0.25) 0%, 
@@ -36,20 +35,19 @@
 /* 1. HERO SECTION (Perfect Vertical Centering) */
 /* ---------------------------------------------------- */
 .hero-section-final {
-    /* CRITICAL: Ensures the section uses full viewport height for perfect centering */
     min-height: 100vh; 
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Pushes content block to center/top and cards to bottom */
+    justify-content: space-between; 
     align-items: center; 
     
     text-align: center;
-    padding-top: 85px; /* Space below fixed navbar */
+    padding-top: 85px; 
     padding-bottom: 20px;
 }
 
 .hero-content-block {
-    /* CRITICAL: This restores the slight upward shift that made the title look good */
+    /* RESTORED UPWARD SHIFT */
     margin-top: -100px; 
     
     flex-grow: 1;
@@ -58,7 +56,7 @@
     justify-content: center;
     align-items: center;
     
-    padding-bottom: 50px; /* Standard space below buttons */
+    padding-bottom: 50px; 
 }
 
 .hero-title {
@@ -88,7 +86,7 @@
     display: flex;
     justify-content: center;
     gap: 20px;
-    /* FINAL MARGIN BEFORE CARDS */
+    /* RESTORED MARGIN BEFORE CARDS */
     margin-bottom: 70px; 
 }
 
@@ -123,7 +121,6 @@
 /* 2. FEATURE CARDS AREA (Appears AFTER scrolling) */
 /* ---------------------------------------------------- */
 .feature-cards-area {
-    /* This section flows naturally below the 100vh hero block */
     padding: 40px 0; 
     width: 100%;
 }
